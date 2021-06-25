@@ -91,6 +91,15 @@
             "jestConfig": "apps/test-project/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "ct": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/test-project/cypress.json",
+            "tsConfig": "apps/test-project/tsconfig.cypress.json",
+            "devServerTarget": "",
+            "testingType": "component"
+          }
         }
       }
     },
