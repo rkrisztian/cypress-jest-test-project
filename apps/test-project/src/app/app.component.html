@@ -2,11 +2,16 @@
   <img
     alt="Nx logo"
     width="75"
-    src="https://nx.dev/assets/images/nx-logo-white.svg"
+    src="/assets/nx-logo.png"
   />
   <h1>Welcome to {{ title }}!</h1>
 </header>
 <main>
+  <h2>Routed content</h2>
+    <nav>
+      <a routerLink="/my-page" routerLinkActive="active">My Page</a>
+    </nav>
+    <router-outlet></router-outlet>
   <h2>Resources &amp; Tools</h2>
   <p>Thank you for using and showing some ♥ for Nx.</p>
   <div class="flex github-star-container">
