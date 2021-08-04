@@ -12,11 +12,19 @@
 // the project's config changing)
 
 const { preprocessTypescript } = require('@nrwl/cypress/plugins/preprocessor');
+const browserify = require('@cypress/browserify-preprocessor');
+const cucumber = require('cypress-cucumber-preprocessor').default;
+const resolve = require('resolve');
 
 module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
-
-  // Preprocess Typescript file using Nx helper
-  on('file:preprocessor', preprocessTypescript(config));
+  on('file:preprocessor', (file) => {
+    return file.filePath.includes('.feature')
+      ? cucumber({
+          ...browserify.defaultOptions,
+          typescript: resolve.sync('typescript', {
+            baseDir: config.projectRoot
+          })
+        })(file)
+      : preprocessTypescript(config)(file);
+  });
 };

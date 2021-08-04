@@ -1,0 +1,4 @@
+{
+  "nonGlobalStepDefinitions": true,
+  "stepDefinitions": "src/integration"
+}
